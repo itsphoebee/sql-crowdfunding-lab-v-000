@@ -22,7 +22,9 @@ ON projects.id = pledges.project_id GROUP BY project_id HAVING (SUM(pledges.amou
 end
 
 def selects_user_names_and_amounts_of_all_pledges_grouped_by_name_then_orders_them_by_the_amount_and_users_name
-"SELECT users.name, pledges.amount FROM users GROUP BY users.name ORDER BY pledges.amount DESC, users.name;"
+"SELECT users.name, pledges.amount FROM users INNER JOIN pledges
+ON pledges.user_id = users.id 
+GROUP BY users.name ORDER BY pledges.amount DESC, users.name;"
 end
 
 def selects_the_category_names_and_pledge_amounts_of_all_pledges_in_the_music_category

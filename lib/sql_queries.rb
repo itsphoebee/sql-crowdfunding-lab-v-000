@@ -12,7 +12,7 @@ ON projects.id = pledges.project_id GROUP BY project_id ORDER BY (projects.title
 end
 
 def selects_the_user_name_age_and_pledge_amount_for_all_pledges_alphabetized_by_name
-"SELECT users.name, users.age, SUM(pledges.amount FROM users INNER JOIN pledges
+"SELECT users.name, users.age, SUM(pledges.amount) FROM users INNER JOIN pledges
 ON pledges.user_id = users.id GROUP ORDER BY (users.name);"
 end
 
